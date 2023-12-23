@@ -7,9 +7,16 @@ function create_grid(grid, x, y) {
         for (let j = 0; j < y; j++) {
             let node = document.createElement('div');
             node.setAttribute('class', 'cell');
+            node.style.backgroundColor = 'white';
             grid.appendChild(node);
         }
     }
+}
+
+function delete_grid(grid) {
+    while (grid.lastElementChild) {
+        grid.removeChild(grid.lastElementChild);
+      }
 }
 
 function change_cell_style(cell, color) {
@@ -29,10 +36,27 @@ document.addEventListener('mouseup', function(event) {
 }, false);
 
 grid.childNodes.forEach(cell => {
-    cell.addEventListener('mousemove', function() {
+    cell.cell = cell;
+
+    cell.addEventListener('mousemove', function(e) {
+        let cell = e.currentTarget.cell;
+
+        if (cell.style.backgroundColor === 'white') {
+            //change_cell_style(cell, 'black')
+        }
+
         if (mousedown) {
             change_cell_style(cell, 'black');
         }
+    }, false);
+
+    cell.addEventListener('mouseenter', function() {
+        
+    },
+    false);
+
+    cell.addEventListener('mouseleave', function() {
+
     }, false);
 
     cell.addEventListener('click', function() {
