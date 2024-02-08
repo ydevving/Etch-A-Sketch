@@ -94,35 +94,6 @@ function change_grid_size() {
     return true;
 }
 
-function add_event_listeners(cell) {
-    cell.cell = cell;
-
-    cell.addEventListener('mousemove', function(e) {
-        let cell = e.currentTarget.cell;
-
-        if (cell.style.backgroundColor === 'white') {
-            //change_cell_style(cell, 'black')
-        }
-
-        if (mousedown) {
-            change_cell_style(cell, 'black');
-        }
-    }, false);
-
-    cell.addEventListener('mouseenter', function() {
-        
-    },
-    false);
-
-    cell.addEventListener('mouseleave', function() {
-
-    }, false);
-
-    cell.addEventListener('click', function() {
-        change_cell_style(cell, 'black');
-    }, false);
-}
-
 document.addEventListener('mousedown', function(event) {
     if (event.button === 0)
         mousedown = true;
